@@ -1,8 +1,8 @@
 package mx.conacyt.crip.ejemplos.openapi.web.api.mapper;
 
 import mx.conacyt.crip.ejemplos.openapi.domain.UserPet;
+import mx.conacyt.crip.ejemplos.openapi.service.api.dto.UserDto;
 import mx.conacyt.crip.ejemplos.openapi.service.mapper.EntityMapper;
-import mx.conacyt.crip.ejemplos.openapi.web.api.model.UserDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingInheritanceStrategy;

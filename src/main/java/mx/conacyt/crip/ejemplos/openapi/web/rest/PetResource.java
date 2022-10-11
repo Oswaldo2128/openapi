@@ -22,7 +22,6 @@ import tech.jhipster.web.util.ResponseUtil;
  */
 @RestController
 @RequestMapping("/api")
-@Deprecated(forRemoval = false) //@deprecated El acceso es por medio del API
 public class PetResource {
 
     private final Logger log = LoggerFactory.getLogger(PetResource.class);

@@ -23,7 +23,6 @@ import tech.jhipster.web.util.ResponseUtil;
 @RestController
 @RequestMapping("/api")
 @Transactional
-@Deprecated(forRemoval = false) //@deprecated El acceso es por medio del API
 public class TagResource {
 
     private final Logger log = LoggerFactory.getLogger(TagResource.class);

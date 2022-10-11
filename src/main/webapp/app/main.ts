@@ -3,6 +3,8 @@
 import Vue from 'vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { setupAxiosInterceptors } from '@/shared/config/axios-interceptor';
+// Servicios y configuración del API
+import { Configuration } from './shared/openapi-client';
 
 import App from './app.vue';
 import Vue2Filters from 'vue2-filters';
@@ -23,6 +25,7 @@ import UserManagementService from './admin/user-management/user-management.servi
 import LoginService from './account/login.service';
 import AccountService from './account/account.service';
 import AlertService from './shared/alert/alert.service';
+import UserApiService from './shared/service/user-api.service';
 
 import '../content/scss/global.scss';
 import '../content/scss/vendor.scss';
@@ -48,6 +51,11 @@ const store = config.initVueXStore(Vue);
 const translationService = new TranslationService(store, i18n);
 const loginService = new LoginService();
 const accountService = new AccountService(store, translationService, router);
+
+// Configuración para el api del back
+export const apiConfiguration = new Configuration({
+  basePath: 'api',
+});
 
 router.beforeEach(async (to, from, next) => {
   if (!to.matched.length) {
@@ -77,16 +85,16 @@ const vue = new Vue({
     loginService: () => loginService,
     activateService: () => new ActivateService(),
     registerService: () => new RegisterService(),
-    userManagementService: () => new UserManagementService(),
+    userService: () => new UserManagementService(),
     healthService: () => new HealthService(),
     configurationService: () => new ConfigurationService(),
     logsService: () => new LogsService(),
     metricsService: () => new MetricsService(),
-
+    // userOAuth2Service: () => new UserOAuth2Service(),
     translationService: () => translationService,
     // jhipster-needle-add-entity-service-to-main - JHipster will import entities services here
     accountService: () => accountService,
-    alertService: () => new AlertService(),
+    userApiService: () => new UserApiService(apiConfiguration),
   },
   i18n,
   store,
