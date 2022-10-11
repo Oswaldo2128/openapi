@@ -1,0 +1,30 @@
+{
+  "applications": "*",
+  "changelogDate": "20221007053623",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "customer",
+  "fields": [],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Customer",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "userPet",
+      "otherEntityRelationshipName": "customer",
+      "ownerSide": true,
+      "relationshipName": "userPet",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "address",
+      "otherEntityRelationshipName": "customer",
+      "relationshipName": "address",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "no",
+  "skipClient": true
+}

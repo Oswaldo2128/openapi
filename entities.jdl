@@ -1,0 +1,81 @@
+// Definición de entidades
+entity UserPet{
+phone String
+userStatus Integer required
+}
+
+entity Customer{
+}
+
+entity Address{
+street String
+city String
+state String
+zip String
+}
+
+entity User{
+firstName String
+lastName String
+login String
+email String
+imageUrl String
+authorities String
+}
+
+entity Order{
+quantity Integer
+shupDate Instant
+status OrderStatus
+complete Boolean
+}
+
+entity Category{
+name String
+}
+
+entity Tag{
+name String
+}
+
+entity Pet{
+name String
+status PetStatus
+}
+
+enum OrderStatus {
+  PLACED,
+  APPROVED,
+  DELIVERED
+}
+
+enum PetStatus {
+  AVAILABLE,
+  PENDING,
+  SOLD
+}
+/**
+* One to one relationship.
+*/
+relationship OneToOne {
+UserPet to User
+}
+
+relationship OneToMany {
+Customer to Address
+}
+
+relationship OneToOne {
+Customer to UserPet
+}
+
+relationship OneToMany {
+Category to Pet
+}
+
+relationship OneToMany {
+Pet to Tag
+}
+
+skipClient *
+service Order, Pet, UserPet with serviceImpl
